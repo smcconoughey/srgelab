@@ -8,6 +8,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Add styles for background GIF and scrollable sections */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .hero-background img, 
+        .hero-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 30, 60, 0.8);
+            z-index: -1;
+        }
+        
+        /* Scrollable sections */
+        .scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            padding-bottom: 16px;
+        }
+        
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .scroll-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+        
+        .research-grid, .team-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+            min-width: min-content;
+        }
+        
+        .research-card, .team-member {
+            flex: 0 0 auto;
+            width: 350px;
+            max-width: none;
+        }
+        
+        /* Scroll indicators */
+        .scroll-indicators {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .scroll-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-indicator:hover {
+            background: var(--accent-hover);
+        }
+    </style>
 </head>
 <body>
     <header id="header">
@@ -41,6 +137,12 @@
     </header>
 
     <section class="hero" id="home">
+        <!-- Add background GIF -->
+        <div class="hero-background">
+            <img src="./assets/space-robotics-bg.gif" alt="Space robotics animation">
+        </div>
+        <div class="hero-overlay"></div>
+        
         <div class="hero-grid"></div>
         <div class="hero-portal-blue"></div>
         <div class="hero-portal-orange"></div>
@@ -64,38 +166,79 @@
             <div class="section-subtitle">
                 Exploring the frontiers of autonomous robotics through innovative approaches to perception, estimation, and control in challenging environments.
             </div>
-            <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-card-img">
-                        <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Perception" alt="Space-Based Perception">
+            
+            <!-- Make research grid horizontally scrollable -->
+            <div class="scroll-container">
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Perception" alt="Space-Based Perception">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Space-Based Perception</h3>
+                            <p>Developing robust visual and sensor-based perception systems for spacecraft navigation in extreme environments with limited lighting conditions.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
                     </div>
-                    <div class="research-card-content">
-                        <h3>Space-Based Perception</h3>
-                        <p>Developing robust visual and sensor-based perception systems for spacecraft navigation in extreme environments with limited lighting conditions.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Generative+Estimation" alt="Generative Estimation">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Generative Estimation</h3>
+                            <p>Creating probabilistic frameworks for state estimation that leverage generative models to handle uncertainty in space robotics applications.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Multi-Robot+Systems" alt="Multi-Robot Systems">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Multi-Robot Systems</h3>
+                            <p>Researching distributed robot teams for collaborative planetary exploration, with robust communication protocols for harsh environments.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional research cards -->
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Orbital+Mechanics" alt="Orbital Mechanics">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Orbital Mechanics</h3>
+                            <p>Studying the dynamics of spacecraft movement in orbit and developing algorithms for precise orbital maneuvers and rendezvous operations.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Debris" alt="Space Debris Mitigation">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Space Debris Mitigation</h3>
+                            <p>Developing technologies and strategies for tracking, avoiding, and removing space debris to ensure sustainable access to space.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="research-card">
-                    <div class="research-card-img">
-                        <img src="https://placehold.co/400x300/003366/ffffff?text=Generative+Estimation" alt="Generative Estimation">
-                    </div>
-                    <div class="research-card-content">
-                        <h3>Generative Estimation</h3>
-                        <p>Creating probabilistic frameworks for state estimation that leverage generative models to handle uncertainty in space robotics applications.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+            </div>
+            
+            <!-- Scroll indicators for research -->
+            <div class="scroll-indicators">
+                <div class="scroll-indicator scroll-left">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
-                
-                <div class="research-card">
-                    <div class="research-card-img">
-                        <img src="https://placehold.co/400x300/003366/ffffff?text=Multi-Robot+Systems" alt="Multi-Robot Systems">
-                    </div>
-                    <div class="research-card-content">
-                        <h3>Multi-Robot Systems</h3>
-                        <p>Researching distributed robot teams for collaborative planetary exploration, with robust communication protocols for harsh environments.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                <div class="scroll-indicator scroll-right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -109,61 +252,108 @@
             <div class="section-subtitle">
                 Meet the brilliant minds behind our cutting-edge research in space robotics and generative estimation.
             </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://placehold.co/300x300/003366/ffffff?text=Jane+Doe" alt="Lab Director">
+            
+            <!-- Make team grid horizontally scrollable -->
+            <div class="scroll-container">
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=Jane+Doe" alt="Lab Director">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>Dr. Jane Doe</h3>
+                            <p class="team-member-role">Lab Director</p>
+                            <p>Specializes in probabilistic robotics and space perception systems. Leading research on generative estimation for space applications.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:jane.doe@srgelab.edu">jane.doe@srgelab.edu</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="team-member-info">
-                        <h3>Dr. Jane Doe</h3>
-                        <p class="team-member-role">Lab Director</p>
-                        <p>Specializes in probabilistic robotics and space perception systems. Leading research on generative estimation for space applications.</p>
-                        <div class="team-member-contact">
-                            <a href="mailto:jane.doe@srgelab.edu">jane.doe@srgelab.edu</a>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=John+Smith" alt="Research Scientist">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>Dr. John Smith</h3>
+                            <p class="team-member-role">Research Scientist</p>
+                            <p>Expert in multi-robot coordination and swarm intelligence for planetary exploration missions.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:john.smith@srgelab.edu">john.smith@srgelab.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=Alex+Johnson" alt="PhD Student">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>Alex Johnson</h3>
+                            <p class="team-member-role">PhD Student</p>
+                            <p>Researching robust SLAM techniques for lunar environments and challenging visual conditions.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:alex.johnson@srgelab.edu">alex.johnson@srgelab.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=Sam+Wilson" alt="PhD Student">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>Sam Wilson</h3>
+                            <p class="team-member-role">PhD Student</p>
+                            <p>Working on vision-based navigation for space robotics and deep learning perception systems.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:sam.wilson@srgelab.edu">sam.wilson@srgelab.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional team members -->
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=Maria+Rodriguez" alt="Postdoctoral Researcher">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>Dr. Maria Rodriguez</h3>
+                            <p class="team-member-role">Postdoctoral Researcher</p>
+                            <p>Developing adaptive control systems for robotic manipulators in zero-gravity environments.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:maria.rodriguez@srgelab.edu">maria.rodriguez@srgelab.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=David+Chen" alt="PhD Student">
+                        </div>
+                        <div class="team-member-info">
+                            <h3>David Chen</h3>
+                            <p class="team-member-role">PhD Student</p>
+                            <p>Researching neural network approaches to spacecraft pose estimation for autonomous docking.</p>
+                            <div class="team-member-contact">
+                                <a href="mailto:david.chen@srgelab.edu">david.chen@srgelab.edu</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://placehold.co/300x300/003366/ffffff?text=John+Smith" alt="Research Scientist">
-                    </div>
-                    <div class="team-member-info">
-                        <h3>Dr. John Smith</h3>
-                        <p class="team-member-role">Research Scientist</p>
-                        <p>Expert in multi-robot coordination and swarm intelligence for planetary exploration missions.</p>
-                        <div class="team-member-contact">
-                            <a href="mailto:john.smith@srgelab.edu">john.smith@srgelab.edu</a>
-                        </div>
-                    </div>
+            </div>
+            
+            <!-- Scroll indicators for team -->
+            <div class="scroll-indicators">
+                <div class="scroll-indicator team-scroll-left">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://placehold.co/300x300/003366/ffffff?text=Alex+Johnson" alt="PhD Student">
-                    </div>
-                    <div class="team-member-info">
-                        <h3>Alex Johnson</h3>
-                        <p class="team-member-role">PhD Student</p>
-                        <p>Researching robust SLAM techniques for lunar environments and challenging visual conditions.</p>
-                        <div class="team-member-contact">
-                            <a href="mailto:alex.johnson@srgelab.edu">alex.johnson@srgelab.edu</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://placehold.co/300x300/003366/ffffff?text=Sam+Wilson" alt="PhD Student">
-                    </div>
-                    <div class="team-member-info">
-                        <h3>Sam Wilson</h3>
-                        <p class="team-member-role">PhD Student</p>
-                        <p>Working on vision-based navigation for space robotics and deep learning perception systems.</p>
-                        <div class="team-member-contact">
-                            <a href="mailto:sam.wilson@srgelab.edu">sam.wilson@srgelab.edu</a>
-                        </div>
-                    </div>
+                <div class="scroll-indicator team-scroll-right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -177,49 +367,48 @@
             <div class="section-subtitle">
                 Interested in our research or potential collaborations? Get in touch with the SRGElab team.
             </div>
-                <div class="contact-info">
-                    <h3>Lab Information</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <p>Department of Aerospace Engineering<br>600 S. Clyde Morris Blvd.<br>Daytona Beach, FL 32114-3900</p>
-                            </div>
+            <div class="contact-info">
+                <h3>Lab Information</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor"/>
+                            </svg>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <a href="mailto:dbsrgelb@erau.edu">dbsrgelb@erau.edu</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <a href="tel:+15551234567">(555) 123-4567</a>
-                            </div>
+                        <div class="contact-text">
+                            <p>Department of Aerospace Engineering<br>600 S. Clyde Morris Blvd.<br>Daytona Beach, FL 32114-3900</p>
                         </div>
                     </div>
                     
-                    <h3>Lab Hours</h3>
-                    <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
-                    Saturday - Sunday: Closed</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <a href="mailto:dbsrgelb@erau.edu">dbsrgelb@erau.edu</a>
+                        </div>
+                    </div>
                     
-                    <p style="margin-top: var(--spacing-md);">For research collaborations, student opportunities, or media inquiries, please contact us directly via email.</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <a href="tel:+15551234567">(555) 123-4567</a>
+                        </div>
+                    </div>
                 </div>
+                
+                <h3>Lab Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
+                Saturday - Sunday: Closed</p>
+                
+                <p style="margin-top: var(--spacing-md);">For research collaborations, student opportunities, or media inquiries, please contact us directly via email.</p>
             </div>
         </div>
     </section>
@@ -234,5 +423,45 @@
     </footer>
 
     <script type="module" src="./main.js"></script>
+    
+    <!-- Added JavaScript for scroll buttons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Research section scroll controls
+            const researchContainer = document.querySelector('#research .scroll-container');
+            const leftResearchBtn = document.querySelector('.scroll-left');
+            const rightResearchBtn = document.querySelector('.scroll-right');
+            
+            leftResearchBtn.addEventListener('click', () => {
+                researchContainer.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+            
+            rightResearchBtn.addEventListener('click', () => {
+                researchContainer.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+            
+            // Team section scroll controls
+            const teamContainer = document.querySelector('#team .scroll-container');
+            const leftTeamBtn = document.querySelector('.team-scroll-left');
+            const rightTeamBtn = document.querySelector('.team-scroll-right');
+            
+            leftTeamBtn.addEventListener('click', () => {
+                teamContainer.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+            
+            rightTeamBtn.addEventListener('click', () => {
+                teamContainer.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+            
+            // Menu toggle for mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>

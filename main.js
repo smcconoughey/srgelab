@@ -34,28 +34,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 70, // Adjust for header height
+                top: targetElement.offsetTop - 70,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// Simple form validation
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Here you would normally send the form data to your server
-        // For now, just show a success message
-        alert('Thank you for your message! We will get back to you soon.');
-        contactForm.reset();
-    });
-}
-
-// Portal animation effect (subtle floating motion)
 const portalBlue = document.querySelector('.hero-portal-blue');
 const portalOrange = document.querySelector('.hero-portal-orange');
 
