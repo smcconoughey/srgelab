@@ -8,8 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <script>
+        const labPhotos = {
+            photo1: './assets/lab-photo-1.jpg', // Robot testing photo
+            photo2: './assets/lab-photo-2.jpg', // Computer screens with visualization
+            photo3: './assets/lab-photo-3.jpg', // Student working on computer
+            photo4: './assets/lab-photo-4.jpg'  // Student with multiple monitors
+        };
+    </script>
     <style>
-        /* Add styles for background GIF and scrollable sections */
         .hero {
             position: relative;
             overflow: hidden;
@@ -103,6 +110,31 @@
         .scroll-indicator:hover {
             background: var(--accent-hover);
         }
+        
+        /* Lab photos gallery */
+        .lab-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .lab-photo {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lab-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .lab-photo img:hover {
+            transform: scale(1.03);
+        }
     </style>
 </head>
 <body>
@@ -157,6 +189,33 @@
             </div>
         </div>
     </section>
+    
+    <!-- Lab Photos Gallery -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Lab</h2>
+            </div>
+            <div class="lab-photos">
+                <div class="lab-photo">
+                    <img id="labPhoto1" src="./assets/lab-photo-1.jpg" alt="Lab robot testing">
+                </div>
+                <div class="lab-photo">
+                    <img id="labPhoto2" src="./assets/lab-photo-2.jpg" alt="Computer visualization">
+                </div>
+                <div class="lab-photo">
+                    <img id="labPhoto3" src="./assets/lab-photo-3.jpg" alt="Student working">
+                </div>
+                <div class="lab-photo">
+                    <img id="labPhoto4" src="./assets/lab-photo-4.jpg" alt="Student with multiple monitors">
+                </div>
+            </div>
+            
+            <div class="section-subtitle">
+                <p>The Space Robotics and Generative Estimation (SRGE) Lab, directed by Dr. Cagri Kilic, specializes in state estimation and navigation for planetary exploration robots. The lab develops physics-informed estimation methods, integrating pseudo-measurements and multi-sensor fusion to enhance localization and mapping in GNSS-denied environments. Research spans single- and multi-robot systems, optimizing autonomy, perception, and mobility in challenging terrains. The lab's work is directly applicable to planetary missions, supporting autonomous exploration, resource prospecting, and robotic collaboration on the Moon and Mars.</p>
+            </div>
+        </div>
+    </section>
 
     <section class="section" id="research">
         <div class="container">
@@ -172,22 +231,11 @@
                 <div class="research-grid">
                     <div class="research-card">
                         <div class="research-card-img">
-                            <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Perception" alt="Space-Based Perception">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Localization+and+Mapping" alt="Localization and Mapping">
                         </div>
                         <div class="research-card-content">
-                            <h3>Space-Based Perception</h3>
-                            <p>Developing robust visual and sensor-based perception systems for spacecraft navigation in extreme environments with limited lighting conditions.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="research-card">
-                        <div class="research-card-img">
-                            <img src="https://placehold.co/400x300/003366/ffffff?text=Generative+Estimation" alt="Generative Estimation">
-                        </div>
-                        <div class="research-card-content">
-                            <h3>Generative Estimation</h3>
-                            <p>Creating probabilistic frameworks for state estimation that leverage generative models to handle uncertainty in space robotics applications.</p>
+                            <h3>Localization and Mapping</h3>
+                            <p>Developing robust state estimation frameworks for ground and legged robots operating on extreme environments (i.e., planetary surfaces).</p>
                             <a href="#" class="btn">Learn More</a>
                         </div>
                     </div>
@@ -198,30 +246,40 @@
                         </div>
                         <div class="research-card-content">
                             <h3>Multi-Robot Systems</h3>
-                            <p>Researching distributed robot teams for collaborative planetary exploration, with robust communication protocols for harsh environments.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional research cards -->
-                    <div class="research-card">
-                        <div class="research-card-img">
-                            <img src="https://placehold.co/400x300/003366/ffffff?text=Orbital+Mechanics" alt="Orbital Mechanics">
-                        </div>
-                        <div class="research-card-content">
-                            <h3>Orbital Mechanics</h3>
-                            <p>Studying the dynamics of spacecraft movement in orbit and developing algorithms for precise orbital maneuvers and rendezvous operations.</p>
+                            <p>Exploring swarm-based and distributed estimation techniques for improved localization and environmental perception.</p>
                             <a href="#" class="btn">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="research-card">
                         <div class="research-card-img">
-                            <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Debris" alt="Space Debris Mitigation">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Physics-Informed+Estimation" alt="Physics-Informed Estimation">
                         </div>
                         <div class="research-card-content">
-                            <h3>Space Debris Mitigation</h3>
-                            <p>Developing technologies and strategies for tracking, avoiding, and removing space debris to ensure sustainable access to space.</p>
+                            <h3>Physics-Informed Estimation</h3>
+                            <p>Enhancing navigation accuracy by incorporating physical laws and constraints relevant to planetary environments.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Terrain-Aware+Mobility" alt="Terrain-Aware Mobility">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Terrain-Aware Mobility</h3>
+                            <p>Modeling robot-terrain interactions to improve slip-aware localization and locomotion strategies.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-card-img">
+                            <img src="https://placehold.co/400x300/003366/ffffff?text=Space+Missions" alt="Application to Space Missions">
+                        </div>
+                        <div class="research-card-content">
+                            <h3>Application to Space Missions</h3>
+                            <p>Translating estimation and navigation methods into practical solutions for planetary exploration missions, including autonomous surface operations.</p>
                             <a href="#" class="btn">Learn More</a>
                         </div>
                     </div>
@@ -244,6 +302,22 @@
         </div>
     </section>
 
+    <section class="section section-light" id="equipment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Equipment</h2>
+            </div>
+            <div class="section-content">
+                <ul>
+                    <li>Rover and quadruped robotic platforms</li>
+                    <li>End effector and manipulators</li>
+                    <li>High-precision IMUs, LiDAR, and stereo cameras</li>
+                    <li>Computational resources for sensor fusion and generative estimation modeling</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section class="section section-light" id="team">
         <div class="container">
             <div class="section-title">
@@ -258,85 +332,56 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=Jane+Doe" alt="Lab Director">
+                            <img src="https://placehold.co/300x300/003366/ffffff?text=Dr.+Cagri+Kilic" alt="Lab Director">
                         </div>
                         <div class="team-member-info">
-                            <h3>Dr. Jane Doe</h3>
+                            <h3>Dr. Cagri Kilic</h3>
                             <p class="team-member-role">Lab Director</p>
-                            <p>Specializes in probabilistic robotics and space perception systems. Leading research on generative estimation for space applications.</p>
+                            <p>Specializes in state estimation and navigation for planetary exploration robots.</p>
                             <div class="team-member-contact">
-                                <a href="mailto:jane.doe@srgelab.edu">jane.doe@srgelab.edu</a>
+                                <a href="mailto:kilicc@erau.edu">kilicc@erau.edu</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="team-member">
                         <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=John+Smith" alt="Research Scientist">
+                            <img src="emre.jpg" alt="PhD Student">
                         </div>
                         <div class="team-member-info">
-                            <h3>Dr. John Smith</h3>
-                            <p class="team-member-role">Research Scientist</p>
-                            <p>Expert in multi-robot coordination and swarm intelligence for planetary exploration missions.</p>
-                            <div class="team-member-contact">
-                                <a href="mailto:john.smith@srgelab.edu">john.smith@srgelab.edu</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=Alex+Johnson" alt="PhD Student">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Alex Johnson</h3>
+                            <h3>Emre Girgin</h3>
                             <p class="team-member-role">PhD Student</p>
-                            <p>Researching robust SLAM techniques for lunar environments and challenging visual conditions.</p>
+                            <p>Computer Vision / Deep Learning / Robotics</p>
                             <div class="team-member-contact">
-                                <a href="mailto:alex.johnson@srgelab.edu">alex.johnson@srgelab.edu</a>
+                                <a href="mailto:girgine@my.erau.edu">girgine@my.erau.edu</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="team-member">
                         <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=Sam+Wilson" alt="PhD Student">
+                            <img src="tubagirgin.jpg" alt="PhD Student">
                         </div>
                         <div class="team-member-info">
-                            <h3>Sam Wilson</h3>
-                            <p class="team-member-role">PhD Student</p>
-                            <p>Working on vision-based navigation for space robotics and deep learning perception systems.</p>
+                            <h3>Tuba Girgin</h3>
+                            <p class="team-member-role">Research Assistant – PhD Student</p>
+                            <p>Robotics researcher specializing in ROS, robot learning, and deep learning for autonomous robot navigation and manipulation on planetary surfaces.</p>
                             <div class="team-member-contact">
-                                <a href="mailto:sam.wilson@srgelab.edu">sam.wilson@srgelab.edu</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional team members -->
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=Maria+Rodriguez" alt="Postdoctoral Researcher">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Dr. Maria Rodriguez</h3>
-                            <p class="team-member-role">Postdoctoral Researcher</p>
-                            <p>Developing adaptive control systems for robotic manipulators in zero-gravity environments.</p>
-                            <div class="team-member-contact">
-                                <a href="mailto:maria.rodriguez@srgelab.edu">maria.rodriguez@srgelab.edu</a>
+                                <a href="mailto:cibukgig@my.erau.edu">cibukgig@my.erau.edu</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="team-member">
                         <div class="team-member-img">
-                            <img src="https://placehold.co/300x300/003366/ffffff?text=David+Chen" alt="PhD Student">
+                            <img src="seanmcconoughey.jpg" alt="Undergraduate Student">
                         </div>
                         <div class="team-member-info">
-                            <h3>David Chen</h3>
-                            <p class="team-member-role">PhD Student</p>
-                            <p>Researching neural network approaches to spacecraft pose estimation for autonomous docking.</p>
+                            <h3>Sean McConoughey</h3>
+                            <p class="team-member-role">Research Assistant – Undergraduate Student</p>
+                            <p>Cybersecurity researcher focused on enhancing cyber resilience in robotics and autonomous exploration systems.</p>
                             <div class="team-member-contact">
-                                <a href="mailto:david.chen@srgelab.edu">david.chen@srgelab.edu</a>
+                                <a href="mailto:mcconous@my.erau.edu">mcconous@my.erau.edu</a>
                             </div>
                         </div>
                     </div>
@@ -424,9 +469,15 @@
 
     <script type="module" src="./main.js"></script>
     
-    <!-- Added JavaScript for scroll buttons -->
+    <!-- Added JavaScript for scroll buttons and to set lab photo sources -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set lab photo sources from the paths defined at the top
+            document.getElementById('labPhoto1').src = labPhotos.photo1;
+            document.getElementById('labPhoto2').src = labPhotos.photo2;
+            document.getElementById('labPhoto3').src = labPhotos.photo3;
+            document.getElementById('labPhoto4').src = labPhotos.photo4;
+            
             // Research section scroll controls
             const researchContainer = document.querySelector('#research .scroll-container');
             const leftResearchBtn = document.querySelector('.scroll-left');
