@@ -1,4 +1,4 @@
-// Mobile Menu Toggle
+// Mobile Menu 
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
@@ -8,7 +8,7 @@ if (menuToggle) {
     });
 }
 
-// Sticky Header on Scroll
+// Sticky Header 
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
@@ -19,12 +19,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Close mobile menu if open
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
         }
@@ -52,7 +50,6 @@ function animatePortals() {
         blueAngle += 0.02;
         orangeAngle += 0.03;
         
-        // Subtle floating motion
         portalBlue.style.transform = `translateY(${Math.sin(blueAngle) * 10}px)`;
         portalOrange.style.transform = `translateY(${Math.sin(orangeAngle) * 15}px)`;
     }
